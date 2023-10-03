@@ -8,13 +8,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        kalam: ["Kalam", "cursive"],
+        raleway: ["Raleway", "sans-serif"],
+      },
+      colors: {
+        "primary-green" : "#76B947",
+        "primary-green-deep" : "#669644",
+        "primary-gray" : "#7A7A7A",
+        "light-geen" : "#76B9471A",
+        "light-gray" : "#ECEEEF",
+        "color-black" : "#000",
+        "header-primary-black" : "#4C4B4C",
+        "light-color" : "#878787"
+      },
+      screens: {
+        sm: "640px",
+        xl: "1140px",
+        lg: "900px",
       },
     },
   },
   plugins: [],
 }
-export default config
+export default config;
