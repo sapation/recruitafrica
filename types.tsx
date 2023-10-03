@@ -5,3 +5,10 @@ export type LabelInput = {
     placeholder: string,
     icon: string
 }
+
+export type ProcessCardProps = {
+    iconUrl: string,
+    firstTitle: string,
+    secondTitle: string,
+    desc: string
+}
