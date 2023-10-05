@@ -3,7 +3,7 @@
 import { FormInput, PrimaryButton } from '@/components'
 import Link from 'next/link'
 import { type } from 'os';
-import React, { FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { AiOutlineArrowLeft } from "react-icons/ai"
 
 
@@ -41,7 +41,7 @@ const page = () => {
       e.preventDefault();
    }
 
-   const onChange = (e: FormEvent<HTMLFormElement>) => {
+   const onChange = (e: ChangeEvent<HTMLFormElement>) => {
       setValues({...values, [e.target.name] : e.target.value})
    }
 

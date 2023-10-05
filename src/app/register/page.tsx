@@ -1,7 +1,7 @@
 "use client";
 import { FormInput } from '@/components'
 import Link from 'next/link'
-import React, {FormEvent, FormEventHandler, useState} from 'react'
+import React, {ChangeEvent,FormEvent, useState} from 'react'
 import { AiOutlineArrowLeft, AiOutlineUser } from "react-icons/ai"
 import { BsBriefcase } from "react-icons/bs"
 
@@ -119,7 +119,7 @@ const page = () => {
       console.log("submitted")
    }
 
-   const onChange = (e:FormEvent) => {
+   const onChange = (e:ChangeEvent<HTMLInputElement>) => {
       setValues({...values,  [e.target.name] : e.target.value});
    }
 
