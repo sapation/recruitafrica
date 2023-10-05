@@ -57,10 +57,10 @@ const Navigation = () => {
           </ul>
 
           <div className="flex flex-col items-start gap-[30px]">
-          <button className="btn_base  w-full text-primary-black border-2 py-2 px-5 border-primary-green
-          hover:bg-primary-green hover:text-white transition-all ease-in duration-400 rounded-lg" >Login</button>
-          <button className="btn_base w-full text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
-           hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Sign Up</button>
+          <Link href="/login" className="btn_base  w-full text-primary-black text-center border-2 py-2 px-5 border-primary-green
+          hover:bg-primary-green hover:text-white transition-all ease-in duration-400 rounded-lg" >Login</Link>
+          <Link href="/register" className="btn_base w-full text-primary-black  text-center border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
+           hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Sign Up</Link>
         </div>
 
           <p>&copy; RecruitAfrica 2023.</p>
