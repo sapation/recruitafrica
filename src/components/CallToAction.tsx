@@ -9,7 +9,7 @@ const CallToAction = () => {
             <p className='text-[20px]'>We make recruiting the best and hard working candidates from africa a 
                 competitive advantage for companies in US 
             </p>
-             <PrimaryButton title="Get Started" />
+             <PrimaryButton title="Get Started" background={false}/>
         </div>
     </div>
   )

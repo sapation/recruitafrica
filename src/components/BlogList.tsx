@@ -15,7 +15,7 @@ const BlogList = () => {
                 <BlogPost />
                 <BlogPost />
             </div>
-            <PrimaryButton title='Read More'/>
+            <PrimaryButton title='Read More' background={false} />
        </div>
     </div>
   )
