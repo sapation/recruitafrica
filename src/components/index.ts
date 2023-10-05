@@ -1,17 +1,26 @@
 import Hero from "./Hero"
-import LabelInput from "./LabelInput"
+import FormInput from "./FormInput"
 import Process from "./Process"
 import CallToAction from "./CallToAction"
 import JobCategories from "./JobCategories"
 import BlogList from "./BlogList"
+import PrimaryButton from "./PrimaryButton"
+import CallToAction2 from "./CallToAction2"
+import Navigation from "./Navigation"
+import Footer from "./Footer"
+
 
 
 
 export {
     Hero,
-    LabelInput,
+    FormInput,
     Process,
     CallToAction,
     JobCategories,
-    BlogList
+    BlogList,
+    PrimaryButton,
+    CallToAction2,
+    Navigation,
+    Footer
 }

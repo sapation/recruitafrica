@@ -1,4 +1,5 @@
 import React from 'react'
+import { PrimaryButton } from '.'
 
 const CallToAction = () => {
   return (
@@ -8,8 +9,7 @@ const CallToAction = () => {
             <p className='text-[20px]'>We make recruiting the best and hard working candidates from africa a 
                 competitive advantage for companies in US 
             </p>
-             <button className="btn_base w-full lg:w-fit text-primary-black border-2 text-white border-primary-green font-bold bg-primary-green rounded-lg py-3 px-5
-           hover:border-primary-green  hover:bg-white hover:text-black">Get Started</button>
+             <PrimaryButton title="Get Started" />
         </div>
     </div>
   )

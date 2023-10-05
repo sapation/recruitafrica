@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
-import { ProcessCardProps } from '../../types'
+import { ProcessCardProps } from '../types'
 
 const ProcessCard = ({iconUrl, firstTitle,secondTitle, desc}: ProcessCardProps) => {
   return (
-    <div className='flex-1 flex flex-col items-center py-10 justify-center gap-10 hover:shadow-lg transition-all duration-150 ease-in'>
-      <div className="bg-light-green w-20 h-20 rounded-full flex items-center justify-center">
+    <div className='flex-1 flex flex-col items-center py-10 justify-center gap-10 hover:shadow-lg hover:rounded-lg transition-all duration-150 ease-in'>
+      <div className=" w-20 h-20 rounded-full flex items-center justify-center hover:scale-90 transition-all ease-in duration-300">
        <Image src={iconUrl} alt=''/>
       </div>
 

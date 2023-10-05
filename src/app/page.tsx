@@ -1,7 +1,14 @@
-"use client";
-import { CallToAction, JobCategories, Hero, Process, BlogList } from '@/components';
-import Navigation from '@/components/Navigation'
-import Image from 'next/image'
+import { 
+  CallToAction, 
+  JobCategories, 
+  Hero,
+  Footer, 
+  Process, 
+  BlogList, 
+  CallToAction2,
+  Navigation
+ } from '@/components';
+
 
 
 export default function Home() {
@@ -13,6 +20,8 @@ export default function Home() {
      <CallToAction />
      <JobCategories />
      <BlogList />
+     <CallToAction2 />
+     <Footer />
     </main>
   )
 }

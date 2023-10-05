@@ -24,7 +24,7 @@ const Process = () => {
           iconUrl={resumeIcon} 
           firstTitle="Find the most suitable" 
           secondTitle ="candidate"
-          desc="Working with the most suitable candidates in from africa." 
+          desc="Working with the most suitable candidates from africa." 
           />
       </div>
         

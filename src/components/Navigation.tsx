@@ -20,6 +20,7 @@ const Navigation = () => {
   }
 
   return (
+    <div className="bg-white fixed w-full shadow-sm z-30">
     <div className="wrapper flex justify-between items-center py-5 relative">
       <Link href="/">
         <Image src='./logo.svg' alt='' width={200} height={100} />
@@ -38,8 +39,8 @@ const Navigation = () => {
         <TbMenuDeep className="block lg:hidden cursor-pointer h-10 w-10" onClick={openMenu} />
 
         {/* Mobile Nav */}
-        <div className={`fixed top-0 right-0 h-full w-full bg-black z-40 ${open ? 'visible' : 'hidden'} opacity-[0.5] transition-all duration-400 ease-in`} />
-        <div className={`px-12 py-12 bg-white shadow-lg w-full sm:w-[300px] min-h-screen ${open ? 'left-0' : '-left-full'} top-0 rounded-r-lg flex flex-col gap-16 lg:hidden absolute z-50 transition-all duration-500 ease-in`}>
+        <div className={`fixed top-0 right-0 h-full w-full bg-black z-[1000] ${open ? 'visible' : 'hidden'} opacity-[0.5] transition-all duration-400 ease-in`} />
+        <div className={`px-12 py-12 bg-white shadow-lg w-full sm:w-[300px] min-h-screen ${open ? 'left-0' : '-left-full'} top-0 rounded-r-lg flex flex-col gap-16 lg:hidden absolute z-[999991] transition-all duration-500 ease-in`}>
           <div className="">
             <Link href="/">
               <Image src='./logo.svg' alt='' width={200} height={100} />
@@ -57,20 +58,21 @@ const Navigation = () => {
 
           <div className="flex flex-col items-start gap-[30px]">
           <button className="btn_base  w-full text-primary-black border-2 py-2 px-5 border-primary-green
-          hover:bg-primary-green hover:text-white rounded-lg" >Login</button>
+          hover:bg-primary-green hover:text-white transition-all ease-in duration-400 rounded-lg" >Login</button>
           <button className="btn_base w-full text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
-           hover:border-primary-green  hover:bg-white hover:text-black">Sign Up</button>
+           hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Sign Up</button>
         </div>
 
           <p>&copy; RecruitAfrica 2023.</p>
         </div>
 
         <div className="hidden lg:flex items-center gap-[30px]">
-          <button className="btn_base text-primary-black border-2 py-2 px-5 border-primary-green
-          hover:bg-primary-green hover:text-white rounded-lg" >Login</button>
-          <button className="btn_base text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
-           hover:border-primary-green  hover:bg-white hover:text-black">Sign Up</button>
+          <Link href="/login" className="btn_base text-primary-black border-2 py-2 px-5 border-primary-green
+          hover:bg-primary-green hover:text-white rounded-lg" >Login</Link>
+          <Link href="/register" className="btn_base text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
+           hover:border-primary-green  hover:bg-white hover:text-black">Sign Up</Link>
         </div>
+    </div>
     </div>
   )
 }
