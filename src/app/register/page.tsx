@@ -152,7 +152,7 @@ const page = () => {
                 </div>
 
                 {inputs.map((input)=> (
-                    <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange} onFocus/>
+                    <FormInput key={input.id} {...input} value={values[input.name as keyof registerValuesProps]} onChange={onChange} onFocus/>
                 ))}
 
                 <div className="mb-5 w-3/4 mx-auto flex gap-2 flex-row">

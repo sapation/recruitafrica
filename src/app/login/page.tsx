@@ -44,7 +44,7 @@ const page = () => {
    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       setValues({...values, [e.target.name] : e.target.value})
    }
-
+console.log(values);
   return (
     <div className='bg-light-gray min-h-screen'>
         <div className="wrapper flex flex-col gap-10 min-h-screen items-center justify-center">
@@ -54,7 +54,7 @@ const page = () => {
                 <h2 className='text-center font-bold text-[28px] mb-5 head_text'>Welcome <span className='green_text'>Back</span></h2>
                 <form action="" className='w-full' onSubmit={handleSubmit}>
                   {inputs.map((input) =>(
-                     <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange} onFocus/>
+                     <FormInput key={input.id} {...input} value={values[input.name as keyof loginValuesProps]} onChange={onChange} onFocus/>
                   ))}
 
                  <div className="mb-5 w-3/4 mx-auto flex gap-2 flex-row justify-between">
