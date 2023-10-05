@@ -1,22 +1,22 @@
 "use client";
 
 import { FormInput, PrimaryButton } from '@/components'
+import { inputProps, loginValuesProps } from '@/types';
 import Link from 'next/link'
-import { type } from 'os';
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { AiOutlineArrowLeft } from "react-icons/ai"
 
 
 
 const page = () => {
-   const [values, setValues] = useState({
+   const [values, setValues] = useState<loginValuesProps>({
     email: "",
     password: ""
    });
 
    //pattern: "^[A-Za-z0-9]{3,16}$"
 
-  const inputs = [
+  const inputs: Array<inputProps> = [
     {
       id: 1,
       label: "Email",
@@ -41,11 +41,9 @@ const page = () => {
       e.preventDefault();
    }
 
-   const onChange = (e: ChangeEvent<HTMLFormElement>) => {
+   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       setValues({...values, [e.target.name] : e.target.value})
    }
-
-   console.log(values);
 
   return (
     <div className='bg-light-gray min-h-screen'>
@@ -56,7 +54,7 @@ const page = () => {
                 <h2 className='text-center font-bold text-[28px] mb-5 head_text'>Welcome <span className='green_text'>Back</span></h2>
                 <form action="" className='w-full' onSubmit={handleSubmit}>
                   {inputs.map((input) =>(
-                     <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
+                     <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange} onFocus/>
                   ))}
 
                  <div className="mb-5 w-3/4 mx-auto flex gap-2 flex-row justify-between">

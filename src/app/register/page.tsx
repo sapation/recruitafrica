@@ -1,5 +1,6 @@
 "use client";
 import { FormInput } from '@/components'
+import { registerValuesProps } from '@/types';
 import Link from 'next/link'
 import React, {ChangeEvent,FormEvent, useState} from 'react'
 import { AiOutlineArrowLeft, AiOutlineUser } from "react-icons/ai"
@@ -7,7 +8,7 @@ import { BsBriefcase } from "react-icons/bs"
 
 const page = () => {
   const [isEmployer, setisEmployer] = useState(false);
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<registerValuesProps>({
       firstName: "",
       lastName: "",
       companyName: "",
@@ -151,7 +152,7 @@ const page = () => {
                 </div>
 
                 {inputs.map((input)=> (
-                    <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
+                    <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange} onFocus/>
                 ))}
 
                 <div className="mb-5 w-3/4 mx-auto flex gap-2 flex-row">
