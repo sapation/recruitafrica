@@ -32,9 +32,7 @@ export type loginValuesProps = {
 }
 
 export type registerValuesProps = {
-    firstName: string,
-    lastName: string,
-    companyName: string,
+    name: string,
     email: string,
     password: string,
     confirmPassword: string

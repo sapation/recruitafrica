@@ -12,7 +12,7 @@ const LabelInput = (props : LabelInput) => {
   }
 
   return (
-    <div className="mb-5 w-3/4 mx-auto flex gap-1 flex-col">
+    <div className="mb-2 w-3/4 mx-auto flex gap-1 flex-col">
         <label className='text-gray-500 capitalize'>{label}</label>
         <input
             {...inputProps} 
