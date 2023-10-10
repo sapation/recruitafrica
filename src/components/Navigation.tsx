@@ -5,6 +5,7 @@ import React, {useState} from 'react'
 import { TbMenuDeep } from "react-icons/tb"
 import { IoClose } from "react-icons/io5"
 import Link from 'next/link';
+import { signOut, useSession } from "next-auth/react"
 
 
 const Navigation = () => {
@@ -18,6 +19,8 @@ const Navigation = () => {
     document.body.style.overflowY = "scroll";
     setOpen(false);
   }
+
+  const { status } = useSession();
 
   return (
     <div className="bg-white fixed w-full shadow-sm z-30">
@@ -57,20 +60,42 @@ const Navigation = () => {
           </ul>
 
           <div className="flex flex-col items-start gap-[30px]">
-          <Link href="/login" className="btn_base  w-full text-primary-black text-center border-2 py-2 px-5 border-primary-green
-          hover:bg-primary-green hover:text-white transition-all ease-in duration-400 rounded-lg" >Login</Link>
-          <Link href="/register" className="btn_base w-full text-primary-black  text-center border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
-           hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Sign Up</Link>
+              {status === "authenticated" ? (
+                <div className='flex'>
+                <Link href="/dashboard" className='text-black'>Profile</Link>
+                <button onClick={() =>signOut()} className="btn_base w-full text-primary-black  text-center border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
+                  hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Logout</button>
+                </div>
+                
+              ) : (
+                <>
+                  <Link href="/login" className="btn_base  w-full text-primary-black text-center border-2 py-2 px-5 border-primary-green
+                  hover:bg-primary-green hover:text-white transition-all ease-in duration-400 rounded-lg" >Login</Link>
+                  <Link href="/register" className="btn_base w-full text-primary-black  text-center border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
+                  hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Sign Up</Link>
+                </>
+                
+              )}
         </div>
 
           <p>&copy; RecruitAfrica 2023.</p>
         </div>
 
         <div className="hidden lg:flex items-center gap-[30px]">
-          <Link href="/login" className="btn_base text-primary-black border-2 py-2 px-5 border-primary-green
-          hover:bg-primary-green hover:text-white rounded-lg" >Login</Link>
-          <Link href="/register" className="btn_base text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
-           hover:border-primary-green  hover:bg-white hover:text-black">Sign Up</Link>
+           {status === "authenticated" ? (
+            <>
+             <Link href="/dashboard" className='link bg-transparent btn_base'>Profile</Link>
+            <button onClick={() =>signOut()} className="btn_base text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
+              hover:border-primary-green  hover:bg-white hover:text-black">Logout</button>
+              </>
+           ) : (
+            <>
+              <Link href="/login" className="btn_base text-primary-black border-2 py-2 px-5 border-primary-green
+              hover:bg-primary-green hover:text-white rounded-lg" >Login</Link>
+              <Link href="/register" className="btn_base text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
+              hover:border-primary-green  hover:bg-white hover:text-black">Sign Up</Link>
+           </>
+           )}
         </div>
     </div>
     </div>

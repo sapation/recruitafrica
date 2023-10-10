@@ -9,7 +9,7 @@ const JobCategoryCard = () => {
             <GrMoney className="text-[36px] text-primary-green"/>
         </div>
         <div className="flex flex-col gap-2">
-            <h4 className='text-[16px] font-bold'>Accounting / Finance</h4>
+            <h4 className='text-[16px] font-bold hover:text-primary-green'>Accounting / Finance</h4>
             <p className='text-gray-500'>(1 open postions)</p>
         </div>
     </div>

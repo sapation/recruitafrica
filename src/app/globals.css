@@ -29,6 +29,10 @@
     @apply text-black font-raleway border-b-2 hover:border-primary-green transition-all duration-150 ease-in cursor-pointer;
   }
 
+  .tab-link {
+    @apply text-black font-raleway  transition-all duration-150 ease-in cursor-pointer;
+  }
+
   .btn_base {
     @apply outline-none transition-all duration-150 ease-in;
   }

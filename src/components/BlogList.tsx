@@ -11,9 +11,9 @@ const BlogList = () => {
               <p className='text-[16px] text-gray-500'>Fresh job related news content posted each day.</p>
             </div>
             <div className="grid grid-cols-1 items-center lg:grid-cols-3 gap-5">
-                <BlogPost />
-                <BlogPost />
-                <BlogPost />
+                <BlogPost imgSrc="/blog1.jpg"/>
+                <BlogPost imgSrc="/blog2.jpg" />
+                <BlogPost imgSrc="/blog3.jpg" />
             </div>
             <PrimaryButton title='Read More' background={false} />
        </div>

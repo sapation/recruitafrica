@@ -8,8 +8,11 @@ import PrimaryButton from "./PrimaryButton"
 import CallToAction2 from "./CallToAction2"
 import Navigation from "./Navigation"
 import Footer from "./Footer"
-
-
+import Sidebar from "./Sidebar"
+import Education from "./Education"
+import WorkExperience from "./WorkExperience"
+import Referee from "./Referee"
+import Modal from "./Modal"
 
 
 export {
@@ -21,6 +24,11 @@ export {
     BlogList,
     PrimaryButton,
     CallToAction2,
+    Sidebar,
     Navigation,
-    Footer
+    Footer,
+    Education,
+    WorkExperience,
+    Referee,
+    Modal
 }

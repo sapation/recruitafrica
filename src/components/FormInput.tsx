@@ -12,7 +12,7 @@ const LabelInput = (props : LabelInput) => {
   }
 
   return (
-    <div className="mb-2 w-3/4 mx-auto flex gap-1 flex-col">
+    <div className="mb-2 w-full mx-auto flex gap-1 flex-col">
         <label className='text-gray-500 capitalize'>{label}</label>
         <input
             {...inputProps} 
@@ -20,7 +20,7 @@ const LabelInput = (props : LabelInput) => {
             onBlur={handleFocus}
             onFocus={() => inputProps.name === "confirmPassword" && setFocused(true)}
             className={` h-[60px] bg-gray-200 focus:bg-white border-2 w-full 
-            text-lg py-2 px-5 rounded-lg outline-0 focus:border-primary-green peer ${focused ? 'invalid:border-red-400' : ''} `} 
+            text-md py-1 px-5 rounded-lg outline-0 focus:border-primary-green peer ${focused ? 'invalid:border-red-400' : ''} `} 
         />
         <span className={`text-[14px] invisible ${focused ? 'peer-invalid:visible' : ''} text-red-400`}>{errorMessage}</span>
     </div>
