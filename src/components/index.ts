@@ -13,6 +13,7 @@ import Education from "./Education"
 import WorkExperience from "./WorkExperience"
 import Referee from "./Referee"
 import Modal from "./Modal"
+import InputField from "./InputField"
 
 
 export {
@@ -30,5 +31,6 @@ export {
     Education,
     WorkExperience,
     Referee,
-    Modal
+    Modal,
+    InputField
 }

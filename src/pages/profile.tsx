@@ -4,12 +4,37 @@ import React, { useState } from 'react'
 import Image from "next/image"
 import Link from "next/link"
 import { Education, Modal, Referee, WorkExperience } from '@/components';
+import { inputProps, loginValuesProps } from '@/types';
 
-type Props = {}
+type Props = {
+    inputs : Array<inputProps>
+}
 
-function profile({}: Props) {
+const inputs: Array<inputProps> = [
+    {
+      id: 1,
+      label: "Email",
+      name: "email",
+      type : "email",
+      placeholder: "Enter Email",
+      errorMessage: "Please enter a valid email",
+      required: true,
+    },
+     {
+      id: 2,
+      label: "Password",
+      name: "password",
+      type : "password",
+      placeholder: "Enter Password",
+      errorMessage: "Please enter password",
+      required: true,
+    }
+  ]
+
+const profile = ({inputs}: Props) => {
     const [toggle, setToggle] = useState<number>(1)
     const [showModal, setShowModal] = useState(false)
+    
 
     const handleShow = ()=> {
          document.body.style.overflowY = "hidden";
@@ -29,7 +54,7 @@ function profile({}: Props) {
                     <Image src="/blog2.jpg" alt="" fill className='rounded-full p-2'/>
                 </div>
                 <button onClick={handleShow} className='btn_base absolute right-0 border-2 py-2 px-5 top-3 font-bold rounded-lg hover:bg-primary-green
-                 hover:text-white hover:border-0 transition-all ease-in duration-400'>Edit Profile</button>
+                 hover:text-white transition-all ease-in duration-300'>Edit Profile</button>
             </div>
             {/* Personal Details  */}
             <div className="mt-20 flex gap-2 flex-col">
@@ -37,7 +62,6 @@ function profile({}: Props) {
                 <p className='text-[22px]'><span>Email:</span> sumaila129@gmail.com</p>
                 <p className='text-[22px]'><span>Phone Number:</span> +233548497005</p>
                 <p className='text-[22px]'><span>Country:</span> Ghana</p>
-                <p className='text-[22px]'><span>Nationality:</span> Ghanaian</p>
                 <p className='text-[22px]'><span>Gender:</span> Male</p>
             </div>
 
@@ -85,7 +109,7 @@ function profile({}: Props) {
                 </div>
             </div>
         </div>
-        <Modal onClose={handleOnClose} show={showModal}/>
+        <Modal onClose={handleOnClose} show={showModal} inputs={inputs}/>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import { LabelInput } from '../types'
 
 const LabelInput = (props : LabelInput) => {
   const [focused, setFocused] = useState(false);
-  const {label,errorMessage, onChange, id, ...inputProps} = props;
+  const {label, errorMessage, onChange, id, ...inputProps} = props;
 
   const handleFocus = (e: FormEvent) => {
       setFocused(true)

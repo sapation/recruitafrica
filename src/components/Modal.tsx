@@ -4,29 +4,14 @@ import { inputProps, loginValuesProps } from '@/types';
 import { FormInput } from '.';
 import {useState, ChangeEvent} from "react"
 
+type props = {
+ show: Boolean, 
+ onClose:()=> void,
+ inputs: Array<inputProps>
 
-const inputs: Array<inputProps> = [
-    {
-      id: 1,
-      label: "Email",
-      name: "email",
-      type : "email",
-      placeholder: "Enter Email",
-      errorMessage: "Please enter a valid email",
-      required: true,
-    },
-     {
-      id: 2,
-      label: "Password",
-      name: "password",
-      type : "password",
-      placeholder: "Enter Password",
-      errorMessage: "Please enter password",
-      required: true,
-    }
-  ]
+}
 
-const Modal = ({show, onClose}: {show: Boolean, onClose:()=> void}) => {
+const Modal = ({show, onClose, inputs}:props) => {
     const [values, setValues] = useState<loginValuesProps>({
     email: "",
     password: ""
@@ -47,7 +32,7 @@ const Modal = ({show, onClose}: {show: Boolean, onClose:()=> void}) => {
         <div className="bg-white p-5 rounded-lg w-3/4 lg:w-1/2 transition-all ease-in duration-500">
             <div className="flex justify-between">
                 <h4 className='font-bold text-[24px]'>Edit profile</h4>
-                <button className='font-bold text-[24px] bg-red-200 p-3 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-400' onClick={onClose}>X</button>
+                <button className='font-bold text-[24px] bg-gray-200 p-3 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-400' onClick={onClose}>X</button>
             </div>
             <div className="mt-3">
                {inputs.map((input) =>(
