@@ -6,6 +6,7 @@ import { TbMenuDeep } from "react-icons/tb"
 import { IoClose } from "react-icons/io5"
 import Link from 'next/link';
 import { signOut, useSession } from "next-auth/react"
+import { Logo } from '../../public';
 
 
 const Navigation = () => {
@@ -20,13 +21,13 @@ const Navigation = () => {
     setOpen(false);
   }
 
-  const { status } = useSession();
+  const {data, status } = useSession();
 
   return (
     <div className="bg-white fixed w-full shadow-sm z-30">
     <div className="wrapper flex justify-between items-center py-5 relative">
       <Link href="/">
-        <Image src='./logo.svg' alt='' width={200} height={100} />
+        <Image src={Logo} alt='' width={200} height={100} />
       </Link>
         {/* <a>RecruitAfrica.</a> */}
 
@@ -62,7 +63,7 @@ const Navigation = () => {
           <div className="flex flex-col items-start gap-[30px]">
               {status === "authenticated" ? (
                 <div className='flex'>
-                <Link href="/dashboard" className='text-black'>Profile</Link>
+                <Link href={`/profile/[key]`} as={`/profile/${data.user.id}`} className='text-black'>View Profile</Link>
                 <button onClick={() =>signOut()} className="btn_base w-full text-primary-black  text-center border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
                   hover:border-primary-green  hover:bg-white transition-all ease-in duration-400 hover:text-black">Logout</button>
                 </div>
@@ -84,7 +85,7 @@ const Navigation = () => {
         <div className="hidden lg:flex items-center gap-[30px]">
            {status === "authenticated" ? (
             <>
-             <Link href="/dashboard" className='link bg-transparent btn_base'>Profile</Link>
+             <Link href={`/profile/${data.user.id}`} className='link bg-transparent btn_base'>Profile</Link>
             <button onClick={() =>signOut()} className="btn_base text-primary-black border-2 text-white border-primary-green bg-primary-green rounded-lg py-2 px-5
               hover:border-primary-green  hover:bg-white hover:text-black">Logout</button>
               </>

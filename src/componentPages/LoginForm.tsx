@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { AiOutlineArrowLeft } from "react-icons/ai"
-import { SignInResponse, signIn } from "next-auth/react"
+import { SignInResponse, signIn, useSession } from "next-auth/react"
 import {useRouter } from "next/navigation"
 import Toast from '@/components/Toast';
 import Spinner from '@/components/Spinner';
@@ -22,14 +22,12 @@ const LoginForm = () => {
    const {register, handleSubmit, formState: { errors }} = useForm<loginForm>({
       resolver: zodResolver(loginSchema)
    });
-   const [focused, setFocused] = useState(false);
 
    const router = useRouter();
 
    const onSubmit = handleSubmit(async(data)=> {
 
       const { email, password } = data;
-      console.log(email, password)
 
       try {
         setLoading(true);
@@ -46,7 +44,7 @@ const LoginForm = () => {
           return;
         }
 
-        router.replace('dashboard');
+        router.replace('/');
       } catch (error) {
         console.log("Error during registration: ", error)
       } finally {
@@ -77,7 +75,6 @@ const LoginForm = () => {
                        <input 
                           type='email'
                           placeholder='Enter email'
-                          onFocus={() => setFocused(true)}
                           className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.email?.message ? 'border-red-400' : ''}`}
                           {...register('email')}
                           />
@@ -89,7 +86,6 @@ const LoginForm = () => {
                        <input 
                           type='password'
                           placeholder='Enter Password'
-                          onFocus={() => setFocused(true)}
                           className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.password?.message ? 'border-red-400' : ''}`}
                           {...register('password')}
                           />

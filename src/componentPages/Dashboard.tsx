@@ -1,5 +1,5 @@
 import { Footer, Navigation, Sidebar } from '@/components'
-import Profile from './profile'
+import Profile from './Profile'
 
 type Props = {}
 

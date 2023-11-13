@@ -1,16 +1,16 @@
 import prisma from "@/utils/client";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { type } from "os";
 
 type user = {
     name: string,
     email: string,
     password: string
 }
-export async function POST(req:Request) {
+export async function POST(request:Request) {
     try{
-        const body = await req.json();
+        const body = await request.json();
+        console.log(body)
 
         const hashedPassword = await bcrypt.hash(body.password, 10);
         body.password = hashedPassword;

@@ -1,7 +1,5 @@
 
-import Dashboard from "@/pages/Dashboard";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import Dashboard from "@/componentPages/Dashboard";
 
 type Props = {}
 

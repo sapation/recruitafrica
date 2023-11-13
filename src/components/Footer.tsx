@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { BiLogoFacebook, BiLogoLinkedin,BiLogoInstagramAlt } from "react-icons/bi"
+import { Logo } from '../../public'
 
 const Footer = () => {
   return (
@@ -28,7 +29,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col gap-5">
          <Link href="/">
-              <Image src='./logo.svg' alt='' width={200} height={100} />
+              <Image src={Logo} alt='' width={200} height={100} />
           </Link>
 
           <p className='max-w-[400px]'>Recruit Africa is a US Base recruitment Company passion about helping the youth in africa to make good use of their talent through recruitment.</p>
