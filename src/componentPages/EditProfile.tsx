@@ -27,7 +27,7 @@ const EditProfile = ({data, id}:{data:Object, id:Number}) => {
 
   const router = useRouter();
 
-  const onSubmit = handleSubmit(async(editData)=> {
+  const onSubmit = handleSubmit(async(editData:registerForm)=> {
 
       const {phoneNumber, country, gender} = editData;
       const body = {

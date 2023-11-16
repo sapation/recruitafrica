@@ -25,7 +25,7 @@ const LoginForm = () => {
 
    const router = useRouter();
 
-   const onSubmit = handleSubmit(async(data)=> {
+   const onSubmit = handleSubmit(async(data:loginForm)=> {
 
       const { email, password } = data;
 

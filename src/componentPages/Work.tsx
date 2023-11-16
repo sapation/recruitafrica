@@ -27,7 +27,7 @@ const Work = ({id}:{id:Number}) => {
     const countryOptions = useMemo(() => countryList().getData(), [])
 
     const onSubmit = handleSubmit(async(data)=> {
-      console.log(data)
+
       try {
         setLoading(true);
         const response = await axios.post(`/api/profile/${id}/work`, data);

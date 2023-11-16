@@ -24,7 +24,7 @@ const RegisterForm = () => {
 
   const router = useRouter();
 
-   const onSubmit = handleSubmit(async(data)=> {
+   const onSubmit = handleSubmit(async(data: registerForm)=> {
 
       const {firstName,lastName, email, password, isEmployer} = data;
       const body = {
