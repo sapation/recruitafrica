@@ -26,6 +26,6 @@ export async function POST(request:Request) {
 
         return NextResponse.json({message: "User registered successfully."}, {status: 201})
     } catch(error) {
-        return NextResponse.json({message: "An error occurred while registering the user"}, {status: 500})
+        return NextResponse.json({message: "An error occurred while registering the user" + error}, {status: 500})
     }
 }
