@@ -17,8 +17,7 @@ const page = async({params}:{params:any}) => {
 
   const { id } = params;
   const data = await getWorkData(id);
-  console.log(session)
-  console.log(data);
+
   if(!session) redirect("/login");
 
   return <EditWork  data={data}/>

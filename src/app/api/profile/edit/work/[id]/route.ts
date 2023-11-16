@@ -37,7 +37,6 @@ export const POST = async (request:NextRequest, { params }:{params: any}) => {
 
         return NextResponse.json({message: "Work updated successfully."}, {status: 201})
     } catch (error) {
-        console.log(error);
         return NextResponse.json({message: "Something went wrong check the fields and try again"}, { status: 500});
     }
 }

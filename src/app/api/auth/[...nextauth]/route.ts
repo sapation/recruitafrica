@@ -2,6 +2,7 @@ import prisma from "@/utils/client";
 import NextAuth from "next-auth/next";
 import  CredentialsProvider  from "next-auth/providers/credentials";
 import bcrypt from "bcrypt"
+import { RequestInternal } from "next-auth";
 
 export const authOptions = NextAuth({
    providers: [
@@ -18,7 +19,7 @@ export const authOptions = NextAuth({
                 },
             },
 
-            async authorize(credentials : any) {
+            authorize: async(credentials: Record<"email" | "password", string>, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">) => {
                const { email, password } = credentials;
                try {
                  const user = await prisma.user.findUnique({
