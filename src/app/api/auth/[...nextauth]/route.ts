@@ -8,7 +8,8 @@ export const authOptions = NextAuth({
    providers: [
         CredentialsProvider({
             name: "Credentials",
-            credentials: {
+            credentials: 
+            {
                 email: {
                     label: "Email",
                     type: "text",
@@ -19,7 +20,7 @@ export const authOptions = NextAuth({
                 },
             },
 
-            authorize: async(credentials: Record<"email" | "password", string>, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">) => {
+            authorize: async(credentials: Record<"id"|"email" | "password", string>, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">) => {
             // async authorize(credentials, req) {
                const { email, password } = credentials;
                try {
@@ -35,8 +36,8 @@ export const authOptions = NextAuth({
                 if(!passwordsMatch) {
                     throw new Error("Password is incorrect");
                 }
-
-                return user;
+                console.log(user);
+                return user as any;
                } catch (error) {
                  console.log(error);
                } 
