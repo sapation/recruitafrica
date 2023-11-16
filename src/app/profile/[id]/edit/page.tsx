@@ -2,7 +2,7 @@ import EditProfile from '@/componentPages/EditProfile'
 import React from 'react'
 
 const getProfileData = async(id:Number) => {
-    const response = await fetch(`api/profile/${id}`)
+    const response = await fetch(process.env.URL +`api/profile/${id}`)
 
     if(response.ok) {
         return response.json();
