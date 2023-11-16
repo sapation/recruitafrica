@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth"
 type Props = {}
 
 const getProfileData = async(id:Number) => {
-    const response = await fetch(`http://localhost:3000/api/profile/${id}`)
+    const response = await fetch(`api/profile/${id}`)
 
     if(response.ok) {
         return response.json();

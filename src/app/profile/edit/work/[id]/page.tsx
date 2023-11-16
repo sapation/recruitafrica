@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 
 const getWorkData = async(id:Number) => {
-    const response = await fetch(`http://localhost:3000/api/profile/edit/work/${id}`)
+    const response = await fetch(`api/profile/edit/work/${id}`)
 
     if(response.ok) {
         return response.json();
