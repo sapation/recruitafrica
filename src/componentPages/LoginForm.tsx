@@ -66,7 +66,7 @@ const LoginForm = () => {
     <div className='bg-light-gray min-h-screen'>
        {error && <Toast message={message} error={error} onclick={closeToast}/>}
         <div className="wrapper flex flex-col gap-10 min-h-screen items-center justify-center">
-            <div className="bg-white w-full lg:w-1/2  items-center justify-center p-[2.5rem]  flex flex-col rounded-lg">
+            <div className="bg-white w-full lg:w-1/2  items-center justify-center p-5  flex flex-col rounded-lg">
 
                 <h2 className='text-center font-bold text-[28px] mb-5 head_text'>Welcome <span className='green_text'>Back</span></h2>
                 <form action="" className='w-full' onSubmit={onSubmit}>

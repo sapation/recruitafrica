@@ -13,7 +13,7 @@ const CallToAction2 = () => {
                 <h2 className='text-white lg:text-[36px] font-bold'>Get Matched The Most Valuable Jobs, Just Drop Your Cv at Recruit Africa</h2>
                 <p className='lg:text-[24px]'>All the most Valuable jobs you can think of is availabel</p>
 
-                <PrimaryButton title='Upload your CV' background={true} />
+                <PrimaryButton url="register" title='Upload your CV' background={true} />
             </div>
         </div>
     </div>

@@ -32,19 +32,20 @@ const RegisterForm = () => {
         lastName,
         email,
         password,
-        employer:isEmployer
+        employer:isEmployer,
       };
 
       try {
         setLoading(true);
         const response = await axios.post("api/register", body);
-
+        console.log(response);
         if(response.status === 201) {
             setMessage(response.data.message)
             router.push("/login");
         } else {
             setError(true);
             setLoading(false);
+            console.log(response.data.message)
             setMessage(response.data.message);
             return;
         }
@@ -65,18 +66,18 @@ const RegisterForm = () => {
     <div className='bg-light-gray min-h-screen'>
       {error && <Toast message={message} error={error} onclick={closeToast}/>}
         <div className="wrapper flex flex-col gap-10 min-h-screen items-center justify-center">
-            <div className="bg-white w-full  lg:w-1/2 mt-[50px]  p-[2.5rem] flex flex-col rounded-lg">
+            <div className="bg-white w-full  lg:w-1/2 mt-[50px]  p-5 flex flex-col rounded-lg">
 
                 <h2 className='text-center font-bold text-[28px] mb-5 head_text'>Welcome to <span className='green_text'>Recruit Africa</span></h2>
 
                 <form  className='' onSubmit={onSubmit}>
-                  <div className='flex flex-col lg:flex-row md:gap-5'>
+                  <div className='flex flex-col lg:flex-row gap-2'>
                       <div className='mb-3 flex flex-col lg:w-1/2'>
                         <label className='text-gray-700 capitalize'>Firstname<span className='text-red-400 text-xl'>*</span></label>
                           <input 
                             type='text'
                             placeholder='Enter Firstname'
-                            className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.email?.message ? 'border-red-400' : ''}`}
+                            className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.firstName?.message ? 'border-red-400' : ''}`}
                             {...register('firstName')}
                             />
                           <Errormessage>{errors.firstName?.message}</Errormessage>
@@ -86,7 +87,7 @@ const RegisterForm = () => {
                           <input 
                             type='text'
                             placeholder='Enter Lastname'
-                            className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.email?.message ? 'border-red-400' : ''}`}
+                            className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.lastName?.message ? 'border-red-400' : ''}`}
                             {...register('lastName')}
                             />
                           <Errormessage>{errors.lastName?.message}</Errormessage>
@@ -108,7 +109,7 @@ const RegisterForm = () => {
                     <input 
                       type='password'
                       placeholder='Enter password'
-                      className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.email?.message ? 'border-red-400' : ''}`}
+                      className={`py-2 px-5 border-[1px] border-gray-600 rounded-md outline-0 focus:border-primary-green peer ${errors.password?.message ? 'border-red-400' : ''}`}
                       {...register('password')}
                       />
                     <Errormessage>{errors.password?.message}</Errormessage>

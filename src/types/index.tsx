@@ -23,7 +23,8 @@ export type ProcessCardProps = {
 
 export type PrimaryButtonProps = {
     title: string,
-    background: boolean
+    background: boolean,
+    url: string
 }
 
 export type loginValuesProps = {

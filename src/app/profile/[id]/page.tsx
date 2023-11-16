@@ -3,11 +3,11 @@ import Profile from "@/componentPages/Profile";
 import { redirect } from "next/navigation"
 import { authOptions } from "../../api/auth/[...nextauth]/route"
 import { getServerSession } from "next-auth"
-import { useRouter } from "next/navigation";
+
 
 type Props = {}
 
-const getProfileData = async(id) => {
+const getProfileData = async(id:Number) => {
     const response = await fetch(`http://localhost:3000/api/profile/${id}`)
 
     if(response.ok) {
@@ -15,7 +15,7 @@ const getProfileData = async(id) => {
     }
 }
 
-const profile = async({params}) => {
+const profile = async({params}: {params:any}) => {
   const session = await getServerSession(authOptions);
 
   const { id } = params;

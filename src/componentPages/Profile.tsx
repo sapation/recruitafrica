@@ -3,69 +3,96 @@
 import React, { useState } from 'react'
 import Image from "next/image"
 import Link from "next/link"
-import { Education, Footer, Modal, Navigation, Referee, WorkExperience } from '@/components';
-import { inputProps, loginValuesProps } from '@/types';
-import { EditProfileModal } from '@/modal';
-
-type Props = {
-    inputs : Array<inputProps>
-}
+import { Education, Footer, Navigation, Referee, WorkExperience } from '@/components';
+import { profileImg } from '../../public';
 
 
+import "../css/profile.css"
+import { z } from 'zod';
+import { WorkForm,EducationForm,RefereeForm } from '@/validationSchema';
 
 
-const Profile = async({data}) => {
+// Function for capitalising words
+// function capitalizeFirstLetter(value: string) {
+//     return value.charAt(0).toUpperCase() + value.slice(1);
+// }
+
+type workForm = z.infer<typeof WorkForm>
+type educationForm = z.infer<typeof EducationForm>
+type refereeForm = z.infer<typeof RefereeForm>
+
+
+const Profile = ({data}: {data:any}) => {
     const [toggle, setToggle] = useState<number>(1);
 
-    // const handleShow = ()=> {
-    //      document.body.style.overflowY = "hidden";
-    //      setShowModal(true);
-    // }
-    // const handleOnClose = () => {
-    //     document.body.style.overflowY = "scroll";
-    //     setShowModal(false)
-    // }
-
-    console.log(data);
-
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
         <Navigation />
-        <div className='pt-20'>
-            <div className='h-[200px] bg-slate-200'/>
+        <div className="main">
+            <div className="topSection"></div>
             <div className="wrapper ">
-                <div className="relative flex justify-between">
-                    <div className="bg-white rounded-full w-[150px] h-[150px] absolute -top-20">
-                        <Image src="/blog2.jpg" alt="" fill className='rounded-full p-2'/>
+                <div className="relative flex justify-between pt-36">
+                    <div className="bg-white rounded-full profileImgContainer absolute">
+                        <Image src={profileImg} alt="" fill className='rounded-full p-2 flex items-center justify-center'/>
                     </div>
-                        <Link href="" className='btn_base absolute right-0 border-2 py-2 px-5 top-3 font-bold rounded-lg hover:bg-primary-green
+                    <Link href={`/profile/[key]/edit`} as={`/profile/${data.id}/edit`} className='btn_base absolute right-0 border-2 py-2 px-5 editProfileBtn font-bold rounded-lg hover:bg-primary-green
                         hover:text-white transition-all ease-in duration-300'>Edit Profile</Link>
                 </div>
                 {/* Personal Details  */}
-                <div className="mt-20 flex gap-2 flex-col">
-                    <h2 className='text-[32px] font-bold'>Iddrisu Sumaila</h2>
-                    <p className='text-[22px]'><span>Email:</span> sumaila129@gmail.com</p>
-                    <p className='text-[22px]'><span>Phone Number:</span> +233548497005</p>
-                    <p className='text-[22px]'><span>Country:</span> Ghana</p>
-                    <p className='text-[22px]'><span>Gender:</span> Male</p>
+                
+                <div className="infoContainer flex gap-2 flex-col">
+                    {data && (
+                        <>
+                        <h2 className='text-[32px] font-bold capitalize'>{data.firstName} {data.lastName}</h2>
+                        <p className='text-[22px]'><span>Email:</span> {data.email}</p>
+
+                        {(data.profile.phoneNumber || data.profile.country) && (
+                            <>
+                                <p className='text-[22px]'><span>Phone Number:</span> {data.profile.phoneNumber}</p>
+                                <p className='text-[22px]'><span>Country:</span> {data.profile.country}</p>
+                                <p className='text-[22px]'><span>Gender:</span> {data.profile.gender}</p>
+                            </>
+                        )}
+                        </>
+                    )}
                 </div>
-                <EditProfileModal />
                 {/* Tabs for the other details */}
                 <div className="my-10">
                     <ul className='flex justify-between border-b-2'>
-                        <li onClick={() => setToggle(1)} className={`py-4 tab-link ${toggle === 1 ? "bg-slate-200" : ""} hover:bg-slate-200 w-full text-center font-bold`}>Work Experience</li>
-                        <li onClick={() => setToggle(2)} className={`py-4 tab-link ${toggle === 2 ? 'bg-slate-200' : ""} hover:bg-slate-200 w-full text-center font-bold`}>Education</li>
-                        <li onClick={() => setToggle(3)} className={`py-4 tab-link ${toggle === 3 ? "bg-slate-200" : ""} hover:bg-slate-200 w-full text-center font-bold`}>Digital Skills</li>
-                        <li onClick={() => setToggle(4)} className={`py-4 tab-link ${toggle === 4 ? "bg-slate-200" : ""} hover:bg-slate-200 w-full text-center font-bold`}>Referee</li>
+                        <li onClick={() => setToggle(1)} className={`py-4 tab-link ${toggle === 1 ? "bg-slate-200" : ""} hover:bg-slate-200 w-full text-center font-bold cursor-pointer`}>Work Experience</li>
+                        <li onClick={() => setToggle(2)} className={`py-4 tab-link ${toggle === 2 ? 'bg-slate-200' : ""} hover:bg-slate-200 w-full text-center font-bold cursor-pointer`}>Education</li>
+                        <li onClick={() => setToggle(3)} className={`py-4 tab-link ${toggle === 3 ? "bg-slate-200" : ""} hover:bg-slate-200 w-full text-center font-bold cursor-pointer`}>Digital Skills</li>
+                        <li onClick={() => setToggle(4)} className={`py-4 tab-link ${toggle === 4 ? "bg-slate-200" : ""} hover:bg-slate-200 w-full text-center font-bold cursor-pointer`}>Referee</li>
                     </ul>
 
                     <div className={`py-10 ${toggle === 1 ? 'block' : 'hidden'}`}>
-                        <WorkExperience />
-                        <WorkExperience />
+                        <div className='flex items-center justify-between'>
+                            <h4 className='font-bold'>Work Experience</h4>
+                            <Link href={`/profile/[key]/work`} as={`/profile/${data.id}/work`} className='btn_base flex items-center w-14 justify-center border-2 py-2 px-5 font-bold rounded-lg bg-primary-green
+                        hover:text-white'>Add Work</Link>
+                        </div>
+                        {data.works.length > 0 ? (
+                            <>
+                            {data.works?.map((work:workForm) =>(
+                                <WorkExperience work={work} id={data.id} />
+                            ))}
+                            </>
+                        ):(
+                            <Link href={`/profile/[key]/work`} as={`/profile/${data.id}/work`} className='hover:underline flex items-center justify-center'>Add work experience</Link>
+                        )}
+                        
                     </div>
                     <div className={`py-10 ${toggle === 2 ? 'block' : 'hidden'}`}>
-                        <Education />
-                        <Education />
+                        {data.educations.length > 0 ? (
+                            <>
+                            {data.education?.map((education:educationForm) =>(
+                                <Education />
+                            ))}
+                            </>
+                        ):(
+                            <Link href={`/profile/[key]/eduction`} as={`/profile/${data.id}/education`} className='btn_base flex items-center w-14 justify-center border-2 py-2 px-5 font-bold rounded-lg bg-primary-green
+                        hover:text-white'>Add Education</Link>
+                        )}
                     </div>
 
                     <div className={`py-10 ${toggle === 3 ? 'block' : 'hidden'}`}>
@@ -89,15 +116,24 @@ const Profile = async({data}) => {
                     </div>
 
                     <div className={`py-10 ${toggle === 4 ? 'block' : 'hidden'}`}>
-                        <Referee />
-                        <Referee />
+                        {data.referee.length > 0 ? (
+                            <>
+                            {data.referee?.map((referee:refereeForm) =>(
+                                <Referee />
+                            ))}
+                            </>
+                        ):(
+                            <Link href={`/profile/[key]/referee`} as={`/profile/${data.id}/referee`} className='btn_base flex items-center w-14 justify-center border-2 py-2 px-5 font-bold rounded-lg bg-primary-green
+                        hover:text-white'>Add Referee</Link>
+                        )}
+                
                     </div>
                 </div>
             </div>
         
         </div>
         <Footer />
-    </main>
+    </div>
   )
 }
 

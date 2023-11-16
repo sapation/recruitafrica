@@ -19,9 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
        <Theme>
-          <AuthProvider>
-            {children}
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
            {/* <ThemePanel /> */}
         </Theme>
         </body>

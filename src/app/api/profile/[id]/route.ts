@@ -1,7 +1,7 @@
 import prisma from "@/utils/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req, { params }) {
+export async function GET(request:NextRequest, { params }:{params:any}) {
     const { id } = params;
 
     try {
@@ -9,11 +9,18 @@ export async function GET(req, { params }) {
             where: { 
                 id: parseInt(id), 
             },
+            include: {
+                profile: true,
+                works: true,
+                educations: true,
+                referee: true
+            },
+
         })
 
-        return new NextResponse(JSON.stringify(profile, {status: 200}))
+        return NextResponse.json(profile, {status: 200})
 
     } catch (error) {
-       return new NextResponse(JSON.stringify({message: "Something went wrong"}, { status: 500}));
+       return NextResponse.json({message: "Something went wrong"}, { status: 500});
     }
 }

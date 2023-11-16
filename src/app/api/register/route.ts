@@ -2,20 +2,16 @@ import prisma from "@/utils/client";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
-type user = {
-    name: string,
-    email: string,
-    password: string
-}
+
 export async function POST(request:Request) {
     try{
         const body = await request.json();
-        console.log(body)
 
         const hashedPassword = await bcrypt.hash(body.password, 10);
         body.password = hashedPassword;
         const email = body.email;
-
+        console.log(body);
+        debugger;
         const userExist = await prisma.user.findUnique({
                 where: {email}
         });
