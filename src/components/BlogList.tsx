@@ -15,7 +15,7 @@ const BlogList = () => {
                 <BlogPost imgSrc="/blog2.jpg" />
                 <BlogPost imgSrc="/blog3.jpg" />
             </div>
-            <PrimaryButton title='Read More' background={false} />
+            <PrimaryButton url='' title='Read More' background={false} />
        </div>
     </div>
   )
